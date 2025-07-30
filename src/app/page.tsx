@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Gauge } from "lucide-react";
+import { BookOpenCheck } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 
@@ -29,16 +29,17 @@ export default function Home() {
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none font-headline">
-                  Sistema de Contador Simple
+                  El Arquitecto de Entrevistas Técnicas
                 </h1>
                 <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                  Una aplicación sencilla para demostrar la autenticación de usuarios y la interacción básica. Inicia sesión para usar el contador.
+                  Un plan maestro integral para la preparación de élite en entrevistas técnicas. Inicia sesión para comenzar tu viaje.
                 </p>
               </div>
               <div className="space-x-4">
                  <Button asChild size="lg">
                     <Link href="/signup">
-                      Empezar
+                      <BookOpenCheck className="mr-2 h-5 w-5" />
+                      Empezar a Aprender
                     </Link>
                   </Button>
               </div>
@@ -47,7 +48,7 @@ export default function Home() {
         </section>
       </main>
       <footer className="flex items-center justify-center p-4 border-t">
-        <p className="text-xs text-muted-foreground">© 2024 Sistema de Contador. Todos los derechos reservados.</p>
+        <p className="text-xs text-muted-foreground">© 2024 El Arquitecto de Entrevistas Técnicas. Todos los derechos reservados.</p>
       </footer>
     </div>
   );
