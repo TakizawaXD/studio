@@ -60,8 +60,8 @@ npm install
 
 ### **Paso 4: Configura las Variables de Entorno**
 
-1.  En la raíz del proyecto, renombra el archivo `.env.example` a `.env` (o crea un nuevo archivo `.env`).
-2.  Abre el archivo `.env` y añade las credenciales de tu aplicación web de Firebase que copiaste en el paso anterior.
+1.  En la raíz del proyecto, crea un nuevo archivo llamado `.env`.
+2.  Abre el archivo `.env` y añade las credenciales de tu aplicación web de Firebase y tu clave de API de Gemini.
 
 ```env
 # Variables de Firebase (obtenidas de la consola de Firebase)
