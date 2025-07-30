@@ -18,21 +18,30 @@ export default function ContentPage({ params }: Props) {
     notFound();
   }
 
+  const getBadgeText = () => {
+    if (content.id.startsWith("part")) return "Parte";
+    if (content.id.startsWith("section")) return "Sección";
+    if (content.id.startsWith("subsection")) return "Lección de Estudio";
+    return "Contenido";
+  }
+
   return (
     <article className="prose prose-invert max-w-none">
       <div className="mb-8">
-        {content.id.startsWith("subsection") ? (
-          <Badge variant="secondary" className="mb-2 font-normal">Sección de Estudio</Badge>
-        ) : (
-           <Badge variant="outline" className="mb-2 font-normal">{content.id.includes('part') ? 'Parte' : 'Sección'}</Badge>
-        )}
+        <Badge variant="secondary" className="mb-2 font-normal">{getBadgeText()}</Badge>
         <h1 className="font-headline text-4xl lg:text-5xl mb-2 text-foreground">
             {content.title}
         </h1>
         {content.description && <p className="text-xl text-muted-foreground mt-4">{content.description}</p>}
       </div>
       <Separator className="my-8" />
-      <ContentRenderer content={content.content || []} />
+      {content.content && content.content.length > 0 ? (
+        <ContentRenderer content={content.content} />
+      ) : (
+        !content.id.startsWith('subsection') && (
+            <p className="text-muted-foreground">Selecciona una lección del menú de la izquierda para comenzar.</p>
+        )
+      )}
     </article>
   );
 }
@@ -44,13 +53,11 @@ export async function generateStaticParams() {
   content.forEach(part => {
      paths.push({ slug: [part.slug] });
     part.sections.forEach(section => {
+      paths.push({ slug: [part.slug, section.slug] });
       if (section.subsections) {
-         paths.push({ slug: [part.slug, section.slug] });
         section.subsections.forEach(subsection => {
           paths.push({ slug: [part.slug, section.slug, subsection.slug] });
         });
-      } else {
-        paths.push({ slug: [part.slug, section.slug] });
       }
     });
   });

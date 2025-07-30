@@ -1,12 +1,12 @@
 import {genkit} from 'genkit';
 import {googleAI} from '@genkit-ai/googleai';
-import {firebase} from '@genkit-ai/firebase';
+import {firebasePlugin} from '@genkit-ai/firebase/plugin';
 import {next} from '@genkit-ai/next';
 
 export const ai = genkit({
   plugins: [
     googleAI(),
-    firebase(),
+    firebasePlugin(),
     next({
       // We need to specify the directory where Genkit can find the compiled flow code.
       // This is because Genkit CLI and the Next.js dev server run as separate processes.

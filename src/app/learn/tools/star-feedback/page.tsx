@@ -1,16 +1,14 @@
 "use client";
 
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { aiStarFeedback, AiStarFeedbackOutput } from "@/ai/flows/star-feedback";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -38,6 +36,21 @@ const formSchema = z.object({
   }),
 });
 
+function SubmitButton() {
+    const { pending } = useFormStatus();
+    return (
+        <Button type="submit" disabled={pending} className="w-full sm:w-auto">
+            {pending ? (
+                <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Analizando...
+                </>
+            ) : "Analizar Respuesta"}
+        </Button>
+    );
+}
+
+
 export default function StarFeedbackPage() {
   const [state, formAction] = useFormState(analyzeStarResponse, {
     data: null,
@@ -51,8 +64,6 @@ export default function StarFeedbackPage() {
       answer: "",
     },
   });
-
-  const { isSubmitting } = form.formState;
 
   return (
     <div className="space-y-8">
@@ -68,65 +79,60 @@ export default function StarFeedbackPage() {
       </div>
 
       <Card>
-        <CardHeader>
-          <CardTitle>Analizador de Respuestas STAR</CardTitle>
-          <CardDescription>
-            Ingresa los detalles a continuación para que tu respuesta sea analizada.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form action={formAction} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="question"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Pregunta de la Entrevista</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Ej: 'Cuéntame sobre una vez que enfrentaste una fecha límite desafiante.'"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      La pregunta de comportamiento que te hicieron.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="answer"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Tu Respuesta STAR</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Describe la Situación, Tarea, Acción y Resultado..."
-                        className="min-h-[200px]"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Tu respuesta completa siguiendo el método STAR.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? (
-                    <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Analizando...
-                    </>
-                ) : "Analizar Respuesta"}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
+        <form action={formAction}>
+            <CardHeader>
+            <CardTitle>Analizador de Respuestas STAR</CardTitle>
+            <CardDescription>
+                Ingresa los detalles a continuación para que tu respuesta sea analizada.
+            </CardDescription>
+            </CardHeader>
+            <CardContent>
+            <Form {...form}>
+                <div className="space-y-8">
+                <FormField
+                    control={form.control}
+                    name="question"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Pregunta de la Entrevista</FormLabel>
+                        <FormControl>
+                        <Input
+                            placeholder="Ej: 'Cuéntame sobre una vez que enfrentaste una fecha límite desafiante.'"
+                            {...field}
+                        />
+                        </FormControl>
+                        <FormDescription>
+                        La pregunta de comportamiento que te hicieron.
+                        </FormDescription>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="answer"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Tu Respuesta STAR</FormLabel>
+                        <FormControl>
+                        <Textarea
+                            placeholder="Describe la Situación, Tarea, Acción y Resultado..."
+                            className="min-h-[200px]"
+                            {...field}
+                        />
+                        </FormControl>
+                        <FormDescription>
+                        Tu respuesta completa siguiendo el método STAR.
+                        </FormDescription>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+                 <SubmitButton />
+                </div>
+            </Form>
+            </CardContent>
+        </form>
       </Card>
 
       {state.data && (
@@ -172,7 +178,7 @@ export default function StarFeedbackPage() {
 
 function FeedbackCard({ icon: Icon, title, feedback }: { icon: React.ElementType, title: string, feedback: string }) {
     return (
-        <Card className="bg-background/50">
+        <Card className="bg-secondary/50">
             <CardHeader>
                 <div className="flex items-center gap-3">
                     <Icon className="w-6 h-6 text-primary"/>
