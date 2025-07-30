@@ -11,20 +11,20 @@ export default function AppLayout({
 }) {
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[280px_1fr]">
-      <div className="hidden border-r bg-background/80 md:block">
+      <div className="hidden border-r bg-secondary/20 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-16 items-center border-b px-6">
             <Link href="/learn">
               <Logo />
             </Link>
           </div>
-          <ScrollArea className="flex-1">
+          <ScrollArea className="flex-1 py-4">
             <MainNav />
           </ScrollArea>
         </div>
       </div>
       <div className="flex flex-col">
-        <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
+        <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/95 px-4 backdrop-blur-sm sm:px-6">
             {/* Mobile Nav Trigger can go here */}
             <div className="md:hidden">
               {/* Placeholder for a mobile nav trigger like a hamburger menu */}
@@ -35,7 +35,9 @@ export default function AppLayout({
             <UserNav />
         </header>
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
-          {children}
+          <div className="mx-auto max-w-4xl">
+            {children}
+          </div>
         </main>
       </div>
     </div>
