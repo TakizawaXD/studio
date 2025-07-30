@@ -18,7 +18,7 @@ export default function SignupPage() {
         </div>
         <CardTitle className="font-headline text-2xl">Crear una Cuenta</CardTitle>
         <CardDescription>
-          Comienza tu viaje para convertirte en un ingeniero de primer nivel.
+          Regístrate para obtener acceso al sistema de contador.
         </CardDescription>
       </CardHeader>
       <CardContent>

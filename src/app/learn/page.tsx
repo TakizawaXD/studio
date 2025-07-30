@@ -1,62 +1,34 @@
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Star, BrainCircuit } from "lucide-react";
-import Link from "next/link";
+import { Minus, Plus } from "lucide-react";
 
-export default function LearnDashboardPage() {
+export default function CounterPage() {
+  const [count, setCount] = useState(0);
+
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold font-headline">Bienvenido a tu Panel de Preparación</h1>
-        <p className="text-muted-foreground">Este es tu centro de mando para triunfar en las entrevistas técnicas. Empecemos.</p>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card>
-          <CardHeader>
-            <div className="flex items-center gap-4">
-              <BookOpen className="w-8 h-8 text-primary" />
-              <CardTitle className="font-headline">El Manual del Arquitecto</CardTitle>
-            </div>
-            <CardDescription>Sumérgete en la guía completa que cubre desde estructuras de datos hasta diseño de sistemas.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild className="w-full">
-              <Link href="/learn/la-fundacion/dominando-el-proceso-de-aprendizaje/cambio-de-paradigma-reconocimiento-de-patrones">Comenzar a Leer la Parte I</Link>
-            </Button>
-          </CardContent>
+    <div className="flex justify-center items-center h-full">
+        <Card className="w-full max-w-sm">
+            <CardHeader className="text-center">
+                <CardTitle className="font-headline text-3xl">Contador</CardTitle>
+                <CardDescription>
+                    Haz clic en los botones para cambiar el valor.
+                </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-col items-center gap-6">
+                <div className="text-7xl font-bold text-primary">{count}</div>
+                <div className="flex gap-4">
+                    <Button onClick={() => setCount(count - 1)} variant="outline" size="lg" aria-label="Decrement">
+                        <Minus className="h-6 w-6" />
+                    </Button>
+                    <Button onClick={() => setCount(count + 1)} variant="default" size="lg" aria-label="Increment">
+                        <Plus className="h-6 w-6" />
+                    </Button>
+                </div>
+            </CardContent>
         </Card>
-
-        <Card>
-          <CardHeader>
-            <div className="flex items-center gap-4">
-              <Star className="w-8 h-8 text-primary" />
-              <CardTitle className="font-headline">Analizador del Método STAR</CardTitle>
-            </div>
-            <CardDescription>Practica tus respuestas de comportamiento y obtén retroalimentación instantánea con IA para perfeccionar tus historias.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild className="w-full">
-              <Link href="/learn/tools/star-feedback">Analizar una Respuesta</Link>
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <div className="flex items-center gap-4">
-              <BrainCircuit className="w-8 h-8 text-primary" />
-              <CardTitle className="font-headline">Patrones de Codificación</CardTitle>
-            </div>
-            <CardDescription>Domina los más de 20 patrones de codificación esenciales para resolver cualquier problema de algoritmos con confianza.</CardDescription>
-          </CardHeader>
-          <CardContent>
-             <Button asChild className="w-full">
-              <Link href="/learn/patrones-de-codificacion/patrones-de-array-o-cadena/ventana-deslizante">Explorar Patrones</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
     </div>
   );
 }

@@ -4,8 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/hooks/use-auth";
 
 export const metadata: Metadata = {
-  title: "Preparación de Entrevistas de Élite",
-  description: "Tu plan maestro para la preparación de entrevistas técnicas de élite.",
+  title: "Sistema de Contador",
+  description: "Una aplicación de contador simple.",
 };
 
 export default function RootLayout({

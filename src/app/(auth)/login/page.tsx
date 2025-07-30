@@ -18,7 +18,7 @@ export default function LoginPage() {
         </div>
         <CardTitle className="font-headline text-2xl">Bienvenido de Nuevo</CardTitle>
         <CardDescription>
-          Inicia sesión en tu cuenta para continuar tu preparación.
+          Inicia sesión en tu cuenta para usar el contador.
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -15,7 +15,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import { User, LogOut, Settings, LayoutDashboard } from "lucide-react";
+import { User, LogOut } from "lucide-react";
 
 export function UserNav() {
   const { user } = useAuth();
@@ -58,17 +58,9 @@ export function UserNav() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => router.push('/learn')}>
-            <LayoutDashboard className="mr-2 h-4 w-4" />
-            <span>Panel</span>
-          </DropdownMenuItem>
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
             <span>Perfil</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Settings className="mr-2 h-4 w-4" />
-            <span>Configuración</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
