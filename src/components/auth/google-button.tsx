@@ -23,6 +23,10 @@ export function GoogleButton({ children }: { children: React.ReactNode }) {
       await signInWithPopup(auth, provider);
       router.push("/learn");
     } catch (error: any) {
+      // No mostrar un error si el usuario simplemente cierra el popup.
+      if (error.code === 'auth/popup-closed-by-user') {
+        return;
+      }
       toast({
         title: "Error al iniciar sesión",
         description: error.message,
