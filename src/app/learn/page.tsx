@@ -7,8 +7,8 @@ export default function LearnDashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Welcome to Your Prep Dashboard</h1>
-        <p className="text-muted-foreground">This is your command center for acing technical interviews. Let's get started.</p>
+        <h1 className="text-3xl font-bold font-headline">Bienvenido a tu Panel de Preparación</h1>
+        <p className="text-muted-foreground">Este es tu centro de mando para triunfar en las entrevistas técnicas. Empecemos.</p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -16,13 +16,13 @@ export default function LearnDashboardPage() {
           <CardHeader>
             <div className="flex items-center gap-4">
               <BookOpen className="w-8 h-8 text-primary" />
-              <CardTitle className="font-headline">The Architect's Handbook</CardTitle>
+              <CardTitle className="font-headline">El Manual del Arquitecto</CardTitle>
             </div>
-            <CardDescription>Dive into the comprehensive guide covering everything from data structures to system design.</CardDescription>
+            <CardDescription>Sumérgete en la guía completa que cubre desde estructuras de datos hasta diseño de sistemas.</CardDescription>
           </CardHeader>
           <CardContent>
             <Button asChild className="w-full">
-              <Link href="/learn/la-fundacion/dominando-el-proceso-de-aprendizaje/cambio-de-paradigma-reconocimiento-de-patrones">Start Reading Part I</Link>
+              <Link href="/learn/la-fundacion/dominando-el-proceso-de-aprendizaje/cambio-de-paradigma-reconocimiento-de-patrones">Comenzar a Leer la Parte I</Link>
             </Button>
           </CardContent>
         </Card>
@@ -31,13 +31,13 @@ export default function LearnDashboardPage() {
           <CardHeader>
             <div className="flex items-center gap-4">
               <Star className="w-8 h-8 text-primary" />
-              <CardTitle className="font-headline">STAR Method Analyzer</CardTitle>
+              <CardTitle className="font-headline">Analizador del Método STAR</CardTitle>
             </div>
-            <CardDescription>Practice your behavioral answers and get instant, AI-powered feedback to perfect your stories.</CardDescription>
+            <CardDescription>Practica tus respuestas de comportamiento y obtén retroalimentación instantánea con IA para perfeccionar tus historias.</CardDescription>
           </CardHeader>
           <CardContent>
             <Button asChild className="w-full">
-              <Link href="/learn/tools/star-feedback">Analyze an Answer</Link>
+              <Link href="/learn/tools/star-feedback">Analizar una Respuesta</Link>
             </Button>
           </CardContent>
         </Card>
@@ -46,13 +46,13 @@ export default function LearnDashboardPage() {
           <CardHeader>
             <div className="flex items-center gap-4">
               <BrainCircuit className="w-8 h-8 text-primary" />
-              <CardTitle className="font-headline">Coding Patterns</CardTitle>
+              <CardTitle className="font-headline">Patrones de Codificación</CardTitle>
             </div>
-            <CardDescription>Master the 20+ essential coding patterns to solve any algorithm problem with confidence.</CardDescription>
+            <CardDescription>Domina los más de 20 patrones de codificación esenciales para resolver cualquier problema de algoritmos con confianza.</CardDescription>
           </CardHeader>
           <CardContent>
              <Button asChild variant="secondary" className="w-full">
-              <Link href="#">Explore Patterns (Coming Soon)</Link>
+              <Link href="#">Explorar Patrones (Próximamente)</Link>
             </Button>
           </CardContent>
         </Card>

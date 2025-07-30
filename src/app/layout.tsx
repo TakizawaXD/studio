@@ -4,8 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/hooks/use-auth";
 
 export const metadata: Metadata = {
-  title: "Elite Interview Prep",
-  description: "Your master plan for elite technical interview preparation.",
+  title: "Preparación de Entrevistas de Élite",
+  description: "Tu plan maestro para la preparación de entrevistas técnicas de élite.",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="es" className="dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

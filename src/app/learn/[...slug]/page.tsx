@@ -20,7 +20,7 @@ export default function ContentPage({ params }: Props) {
   return (
     <article className="prose prose-invert max-w-none">
       <h1 className="font-headline text-4xl mb-2">{content.title}</h1>
-      {content.id.startsWith("subsection") && <Badge variant="secondary" className="mb-8">Study Section</Badge>}
+      {content.id.startsWith("subsection") && <Badge variant="secondary" className="mb-8">Sección de Estudio</Badge>}
       <ContentRenderer content={content.content || []} />
     </article>
   );

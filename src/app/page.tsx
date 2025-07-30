@@ -16,10 +16,10 @@ export default function Home() {
             className="text-sm font-medium hover:underline underline-offset-4"
             prefetch={false}
           >
-            Login
+            Iniciar Sesión
           </Link>
           <Button asChild>
-            <Link href="/signup">Get Started</Link>
+            <Link href="/signup">Comenzar</Link>
           </Button>
         </nav>
       </header>
@@ -30,16 +30,16 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none font-headline">
-                    The Technical Interview Architect
+                    El Arquitecto de Entrevistas Técnicas
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Your comprehensive master plan for elite-level technical interview preparation. Master patterns, data structures, and system design to land your dream job.
+                    Tu plan maestro integral para la preparación de entrevistas técnicas de élite. Domina patrones, estructuras de datos y diseño de sistemas para conseguir el trabajo de tus sueños.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button asChild size="lg">
                     <Link href="/signup">
-                      Start Learning for Free
+                      Empieza a Aprender Gratis
                     </Link>
                   </Button>
                 </div>
@@ -50,19 +50,19 @@ export default function Home() {
                       <div className="p-2 bg-primary/10 rounded-md">
                         <Code className="w-6 h-6 text-primary" />
                       </div>
-                      <h3 className="text-lg font-semibold font-headline">Pattern Recognition</h3>
+                      <h3 className="text-lg font-semibold font-headline">Reconocimiento de Patrones</h3>
                     </div>
                     <p className="text-sm text-muted-foreground mb-4">
-                      Move beyond rote memorization. Learn to identify underlying patterns to solve any problem.
+                      Ve más allá de la memorización. Aprende a identificar patrones subyacentes para resolver cualquier problema.
                     </p>
                     <div className="flex items-center gap-4">
                        <div className="p-2 bg-primary/10 rounded-md">
                         <BookOpen className="w-6 h-6 text-primary" />
                       </div>
-                      <h3 className="text-lg font-semibold font-headline">Structured Study</h3>
+                      <h3 className="text-lg font-semibold font-headline">Estudio Estructurado</h3>
                     </div>
                      <p className="text-sm text-muted-foreground mt-4">
-                      Follow curated study plans like Blind 75 and NeetCode 150 for efficient, high-impact practice.
+                      Sigue planes de estudio curados como Blind 75 y NeetCode 150 para una práctica eficiente y de alto impacto.
                     </p>
                   </div>
               </div>
@@ -71,7 +71,7 @@ export default function Home() {
         </section>
       </main>
       <footer className="flex items-center justify-center p-4 border-t">
-        <p className="text-xs text-muted-foreground">© 2024 Elite Interview Prep. All rights reserved.</p>
+        <p className="text-xs text-muted-foreground">© 2024 Preparación de Entrevistas de Élite. Todos los derechos reservados.</p>
       </footer>
     </div>
   );

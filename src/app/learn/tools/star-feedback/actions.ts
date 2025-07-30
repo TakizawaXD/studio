@@ -23,7 +23,7 @@ export async function analyzeStarResponse(
   });
 
   if (!parsed.success) {
-    return { data: null, error: "Invalid form data." };
+    return { data: null, error: "Datos del formulario no válidos." };
   }
 
   try {
@@ -32,7 +32,7 @@ export async function analyzeStarResponse(
   } catch (e: any) {
     return {
       data: null,
-      error: e.message || "An unexpected error occurred.",
+      error: e.message || "Ocurrió un error inesperado.",
     };
   }
 }

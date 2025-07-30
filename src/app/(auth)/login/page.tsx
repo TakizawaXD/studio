@@ -16,17 +16,17 @@ export default function LoginPage() {
         <div className="mb-4 flex justify-center">
           <Logo />
         </div>
-        <CardTitle className="font-headline text-2xl">Welcome Back</CardTitle>
+        <CardTitle className="font-headline text-2xl">Bienvenido de Nuevo</CardTitle>
         <CardDescription>
-          Sign in to your account to continue your prep.
+          Inicia sesión en tu cuenta para continuar tu preparación.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <LoginForm />
         <div className="mt-4 text-center text-sm">
-          Don&apos;t have an account?{" "}
+          ¿No tienes una cuenta?{" "}
           <Link href="/signup" className="underline text-primary">
-            Sign up
+            Regístrate
           </Link>
         </div>
       </CardContent>

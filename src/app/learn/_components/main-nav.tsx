@@ -74,7 +74,7 @@ export function MainNav() {
           ))}
         </Accordion>
         <div className="px-4 py-2">
-           <h3 className="mb-2 font-headline text-lg">Tools</h3>
+           <h3 className="mb-2 font-headline text-lg">Herramientas</h3>
             <ul className="space-y-1">
                 <li>
                     <Link href="/learn/tools/star-feedback" passHref>
@@ -85,7 +85,7 @@ export function MainNav() {
                                 : "hover:bg-accent/50"
                         )}>
                             <BotMessageSquare className="w-4 h-4" />
-                            STAR Feedback AI
+                            Feedback STAR con IA
                         </span>
                     </Link>
                 </li>

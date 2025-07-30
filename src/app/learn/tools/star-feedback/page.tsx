@@ -31,10 +31,10 @@ import { analyzeStarResponse } from "./actions";
 
 const formSchema = z.object({
   question: z.string().min(10, {
-    message: "Question must be at least 10 characters.",
+    message: "La pregunta debe tener al menos 10 caracteres.",
   }),
   answer: z.string().min(50, {
-    message: "Answer must be at least 50 characters.",
+    message: "La respuesta debe tener al menos 50 caracteres.",
   }),
 });
 
@@ -59,19 +59,19 @@ export default function StarFeedbackPage() {
       <div>
         <div className="flex items-center gap-4 mb-2">
             <BotMessageSquare className="w-8 h-8 text-primary"/>
-            <h1 className="text-3xl font-bold font-headline">AI STAR Method Feedback</h1>
+            <h1 className="text-3xl font-bold font-headline">Feedback del Método STAR con IA</h1>
         </div>
         <p className="text-muted-foreground">
-          Refine your behavioral interview answers. Paste the question and your
-          STAR response to get instant, AI-powered feedback.
+          Perfecciona tus respuestas en entrevistas de comportamiento. Pega la pregunta y tu
+          respuesta STAR para obtener retroalimentación instantánea impulsada por IA.
         </p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>STAR Response Analyzer</CardTitle>
+          <CardTitle>Analizador de Respuestas STAR</CardTitle>
           <CardDescription>
-            Enter the details below to have your response analyzed.
+            Ingresa los detalles a continuación para que tu respuesta sea analizada.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -82,15 +82,15 @@ export default function StarFeedbackPage() {
                 name="question"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Interview Question</FormLabel>
+                    <FormLabel>Pregunta de la Entrevista</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="e.g., 'Tell me about a time you faced a challenging deadline.'"
+                        placeholder="Ej: 'Cuéntame sobre una vez que enfrentaste una fecha límite desafiante.'"
                         {...field}
                       />
                     </FormControl>
                     <FormDescription>
-                      The behavioral question you were asked.
+                      La pregunta de comportamiento que te hicieron.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -101,16 +101,16 @@ export default function StarFeedbackPage() {
                 name="answer"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your STAR Answer</FormLabel>
+                    <FormLabel>Tu Respuesta STAR</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Describe the Situation, Task, Action, and Result..."
+                        placeholder="Describe la Situación, Tarea, Acción y Resultado..."
                         className="min-h-[200px]"
                         {...field}
                       />
                     </FormControl>
                     <FormDescription>
-                      Your complete answer following the STAR method.
+                      Tu respuesta completa siguiendo el método STAR.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -120,9 +120,9 @@ export default function StarFeedbackPage() {
                 {isSubmitting ? (
                     <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Analyzing...
+                        Analizando...
                     </>
-                ) : "Analyze Response"}
+                ) : "Analizar Respuesta"}
               </Button>
             </form>
           </Form>
@@ -132,15 +132,15 @@ export default function StarFeedbackPage() {
       {state.data && (
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline text-2xl">Analysis Results</CardTitle>
+            <CardTitle className="font-headline text-2xl">Resultados del Análisis</CardTitle>
             <CardDescription>
-              Here's the breakdown of your response.
+              Aquí está el desglose de tu respuesta.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div>
               <div className="flex justify-between items-center mb-2">
-                <h3 className="text-lg font-semibold">Overall Score</h3>
+                <h3 className="text-lg font-semibold">Puntuación General</h3>
                 <span className="text-xl font-bold text-primary">{state.data.overallScore}/100</span>
               </div>
               <Progress value={state.data.overallScore} className="w-full" />
@@ -148,10 +148,10 @@ export default function StarFeedbackPage() {
             </div>
             
             <div className="grid gap-4 md:grid-cols-2">
-              <FeedbackCard icon={Lightbulb} title="Situation" feedback={state.data.situationFeedback} />
-              <FeedbackCard icon={Target} title="Task" feedback={state.data.taskFeedback} />
-              <FeedbackCard icon={ArrowRight} title="Action" feedback={state.data.actionFeedback} />
-              <FeedbackCard icon={Award} title="Result" feedback={state.data.resultFeedback} />
+              <FeedbackCard icon={Lightbulb} title="Situación" feedback={state.data.situationFeedback} />
+              <FeedbackCard icon={Target} title="Tarea" feedback={state.data.taskFeedback} />
+              <FeedbackCard icon={ArrowRight} title="Acción" feedback={state.data.actionFeedback} />
+              <FeedbackCard icon={Award} title="Resultado" feedback={state.data.resultFeedback} />
             </div>
 
           </CardContent>
@@ -161,7 +161,7 @@ export default function StarFeedbackPage() {
       {state.error && (
          <Card className="border-destructive">
             <CardHeader>
-                <CardTitle className="text-destructive">Analysis Failed</CardTitle>
+                <CardTitle className="text-destructive">Análisis Fallido</CardTitle>
                 <CardDescription className="text-destructive/80">{state.error}</CardDescription>
             </CardHeader>
         </Card>

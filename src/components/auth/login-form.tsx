@@ -23,10 +23,10 @@ import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: "Por favor, introduce una dirección de correo electrónico válida.",
   }),
   password: z.string().min(1, {
-    message: "Password is required.",
+    message: "La contraseña es obligatoria.",
   }),
 });
 
@@ -50,8 +50,8 @@ export function LoginForm() {
       router.push("/learn");
     } catch (error: any) {
       toast({
-        title: "Authentication Error",
-        description: "Invalid email or password. Please try again.",
+        title: "Error de autenticación",
+        description: "Correo electrónico o contraseña no válidos. Por favor, inténtalo de nuevo.",
         variant: "destructive",
       });
     } finally {
@@ -68,9 +68,9 @@ export function LoginForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Correo Electrónico</FormLabel>
                 <FormControl>
-                  <Input placeholder="name@example.com" {...field} />
+                  <Input placeholder="nombre@ejemplo.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -81,7 +81,7 @@ export function LoginForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Contraseña</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="••••••••" {...field} />
                 </FormControl>
@@ -91,7 +91,7 @@ export function LoginForm() {
           />
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Sign In with Email
+            Iniciar Sesión con Correo
           </Button>
         </form>
       </Form>
@@ -101,11 +101,11 @@ export function LoginForm() {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-card px-2 text-muted-foreground">
-            Or continue with
+            O continuar con
           </span>
         </div>
       </div>
-      <GoogleButton>Sign in with Google</GoogleButton>
+      <GoogleButton>Iniciar sesión con Google</GoogleButton>
     </div>
   );
 }

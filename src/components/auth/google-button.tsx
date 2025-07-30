@@ -24,7 +24,7 @@ export function GoogleButton({ children }: { children: React.ReactNode }) {
       router.push("/learn");
     } catch (error: any) {
       toast({
-        title: "Error signing in",
+        title: "Error al iniciar sesión",
         description: error.message,
         variant: "destructive",
       });

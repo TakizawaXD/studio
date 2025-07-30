@@ -23,10 +23,10 @@ import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: "Por favor, introduce una dirección de correo electrónico válida.",
   }),
   password: z.string().min(8, {
-    message: "Password must be at least 8 characters long.",
+    message: "La contraseña debe tener al menos 8 caracteres.",
   }),
 });
 
@@ -50,11 +50,11 @@ export function SignupForm() {
       router.push("/learn");
     } catch (error: any) {
       toast({
-        title: "Registration Error",
+        title: "Error de Registro",
         description:
           error.code === "auth/email-already-in-use"
-            ? "This email is already in use."
-            : "An error occurred. Please try again.",
+            ? "Este correo electrónico ya está en uso."
+            : "Ocurrió un error. Por favor, inténtalo de nuevo.",
         variant: "destructive",
       });
     } finally {
@@ -71,9 +71,9 @@ export function SignupForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Correo Electrónico</FormLabel>
                 <FormControl>
-                  <Input placeholder="name@example.com" {...field} />
+                  <Input placeholder="nombre@ejemplo.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -84,7 +84,7 @@ export function SignupForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Contraseña</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="••••••••" {...field} />
                 </FormControl>
@@ -94,7 +94,7 @@ export function SignupForm() {
           />
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Sign Up with Email
+            Registrarse con Correo
           </Button>
         </form>
       </Form>
@@ -104,11 +104,11 @@ export function SignupForm() {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-card px-2 text-muted-foreground">
-            Or continue with
+            O continuar con
           </span>
         </div>
       </div>
-      <GoogleButton>Sign up with Google</GoogleButton>
+      <GoogleButton>Registrarse con Google</GoogleButton>
     </div>
   );
 }

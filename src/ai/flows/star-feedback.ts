@@ -1,19 +1,19 @@
 'use server';
 
 /**
- * @fileOverview An AI agent that provides feedback on STAR method interview responses.
+ * @fileOverview Un agente de IA que proporciona retroalimentación sobre las respuestas de entrevistas utilizando el método STAR.
  *
- * - aiStarFeedback - A function that handles the STAR feedback process.
- * - AiStarFeedbackInput - The input type for the aiStarFeedback function.
- * - AiStarFeedbackOutput - The return type for the aiStarFeedback function.
+ * - aiStarFeedback - Una función que maneja el proceso de retroalimentación STAR.
+ * - AiStarFeedbackInput - El tipo de entrada para la función aiStarFeedback.
+ * - AiStarFeedbackOutput - El tipo de retorno para la función aiStarFeedback.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const AiStarFeedbackInputSchema = z.object({
-  question: z.string().describe('The behavioral question asked by the interviewer.'),
-  answer: z.string().describe('The candidate\'s response to the question using the STAR method.'),
+  question: z.string().describe('La pregunta de comportamiento hecha por el entrevistador.'),
+  answer: z.string().describe('La respuesta del candidato a la pregunta usando el método STAR.'),
 });
 export type AiStarFeedbackInput = z.infer<typeof AiStarFeedbackInputSchema>;
 
@@ -21,15 +21,15 @@ const AiStarFeedbackOutputSchema = z.object({
   overallScore: z
     .number()
     .describe(
-      'A numerical score (out of 100) representing the overall quality of the STAR response.'
+      'Una puntuación numérica (de 100) que representa la calidad general de la respuesta STAR.'
     ),
   situationFeedback: z
     .string()
-    .describe('Feedback on the Situation component of the STAR response.'),
-  taskFeedback: z.string().describe('Feedback on the Task component of the STAR response.'),
-  actionFeedback: z.string().describe('Feedback on the Action component of the STAR response.'),
-  resultFeedback: z.string().describe('Feedback on the Result component of the STAR response.'),
-  overallFeedback: z.string().describe('Overall feedback and suggestions for improvement.'),
+    .describe('Retroalimentación sobre el componente de Situación de la respuesta STAR.'),
+  taskFeedback: z.string().describe('Retroalimentación sobre el componente de Tarea de la respuesta STAR.'),
+  actionFeedback: z.string().describe('Retroalimentación sobre el componente de Acción de la respuesta STAR.'),
+  resultFeedback: z.string().describe('Retroalimentación sobre el componente de Resultado de la respuesta STAR.'),
+  overallFeedback: z.string().describe('Retroalimentación general y sugerencias de mejora.'),
 });
 export type AiStarFeedbackOutput = z.infer<typeof AiStarFeedbackOutputSchema>;
 
@@ -41,19 +41,19 @@ const prompt = ai.definePrompt({
   name: 'aiStarFeedbackPrompt',
   input: {schema: AiStarFeedbackInputSchema},
   output: {schema: AiStarFeedbackOutputSchema},
-  prompt: `You are an AI-powered interview coach specializing in providing feedback on responses to behavioral interview questions using the STAR method (Situation, Task, Action, Result).
+  prompt: `Eres un entrenador de entrevistas impulsado por IA que se especializa en proporcionar retroalimentación sobre respuestas a preguntas de entrevistas de comportamiento utilizando el método STAR (Situación, Tarea, Acción, Resultado).
 
-  Evaluate the provided answer based on the following criteria for each STAR component:
+  Evalúa la respuesta proporcionada basándote en los siguientes criterios para cada componente STAR:
 
-  - Situation: Was the context clearly and concisely described?
-  - Task: Was the challenge or objective well-defined?
-  - Action: Were the actions taken by the candidate clearly articulated, and did they demonstrate relevant skills?
-  - Result: Were the outcomes of the actions quantified, and were lessons learned shared?
+  - Situación: ¿Se describió el contexto de manera clara y concisa?
+  - Tarea: ¿Estaba bien definido el desafío u objetivo?
+  - Acción: ¿Se articularon claramente las acciones tomadas por el candidato y demostraron habilidades relevantes?
+  - Resultado: ¿Se cuantificaron los resultados de las acciones y se compartieron las lecciones aprendidas?
 
-  Provide a numerical score (out of 100) for the overall quality of the response. Provide constructive feedback for each component of the STAR method, and give overall suggestions for improvement.
+  Proporciona una puntuación numérica (de 100) para la calidad general de la respuesta. Ofrece retroalimentación constructiva para cada componente del método STAR y da sugerencias generales para mejorar.
 
-  Question: {{{question}}}
-  Answer: {{{answer}}}
+  Pregunta: {{{question}}}
+  Respuesta: {{{answer}}}
   `,
 });
 
