@@ -30,9 +30,10 @@ export function UserNav() {
     return null;
   }
 
-  const getInitials = (email: string | null | undefined) => {
-    if (!email) return "U";
-    return email[0].toUpperCase();
+  const getInitials = (name: string | null | undefined, email: string | null | undefined) => {
+    if (name) return name.split(' ').map(n => n[0]).join('').toUpperCase();
+    if (email) return email[0].toUpperCase();
+    return "U";
   };
 
   return (
@@ -41,7 +42,7 @@ export function UserNav() {
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
             <AvatarImage src={user.photoURL || ""} alt={user.displayName || "Usuario"} />
-            <AvatarFallback>{getInitials(user.email)}</AvatarFallback>
+            <AvatarFallback>{getInitials(user.displayName, user.email)}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
