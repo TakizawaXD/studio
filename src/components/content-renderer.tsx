@@ -1,3 +1,5 @@
+"use client";
+
 import type { ContentItem } from "@/lib/content";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Link from "next/link";
