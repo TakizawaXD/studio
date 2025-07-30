@@ -181,8 +181,6 @@ export const content: Part[] = [
               ]},
               { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
               "Cualquier problema que involucre una colección ordenada de datos, procesamiento de texto, o la necesidad de acceso rápido por índice. Son la base para muchos patrones como Ventana Deslizante y Dos Punteros.",
-              { type: 'heading', level: 4, text: "Implementación" },
-              "Los arrays dinámicos (como ArrayList en Java, list en Python, std::vector en C++) son la implementación más común que gestiona automáticamente el redimensionamiento.",
             ]
           },
           {
@@ -201,13 +199,197 @@ export const content: Part[] = [
                 "Inserción/Eliminación (al final): O(n) para simplemente enlazadas (requiere recorrer), O(1) si se mantiene un puntero a la cola."
               ]},
               { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
-              "Problemas que requieren frecuentes inserciones o eliminaciones en medio de una secuencia, o donde la memoria no puede ser asignada de forma contigua. El patrón de \"Punteros Rápidos y Lentos\" se utiliza comúnmente para detectar ciclos o encontrar el medio. Problemas como \"Invertir una Lista Enlazada\" son clásicos."
+              "Problemas que requieren frecuentes inserciones o eliminaciones en medio de una secuencia. El patrón de \"Punteros Rápidos y Lentos\" se utiliza comúnmente para detectar ciclos o encontrar el medio. Problemas como \"Invertir una Lista Enlazada\" son clásicos."
+            ]
+          },
+          {
+            id: 'subsection-2-3',
+            title: '2.3 Tablas Hash (Mapas)',
+            slug: 'tablas-hash',
+            content: [
+              "Las tablas hash (o mapas) almacenan pares clave-valor. Utilizan una función hash para calcular un índice en un array de cubetas o ranuras, desde donde se puede encontrar el valor deseado.",
+              { type: 'heading', level: 4, text: "Modelo Conceptual" },
+              "Una estructura de datos que mapea claves a valores para búsquedas, inserciones y eliminaciones altamente eficientes. La clave se pasa a través de una función hash que determina dónde almacenar el valor. Las colisiones (dos claves que hashean al mismo índice) se manejan típicamente con encadenamiento (listas enlazadas en cada índice).",
+              { type: 'heading', level: 4, text: "Operaciones Clave y Complejidad" },
+              { type: 'list', items: [
+                "Inserción: O(1) en promedio, O(n) en el peor caso (si todas las claves colisionan)",
+                "Eliminación: O(1) en promedio, O(n) en el peor caso",
+                "Búsqueda: O(1) en promedio, O(n) en el peor caso"
+              ]},
+              { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
+              "Siempre que necesites buscar, insertar o eliminar elementos rápidamente y el orden no sea importante. Son increíblemente versátiles. Palabras clave: \"frecuencia\", \"conteo\", \"duplicados\", \" caché\", \"dos sumas\". Problemas como \"Two Sum\", \"Group Anagrams\" y la implementación de una caché LRU dependen de las tablas hash."
+            ]
+          },
+          {
+            id: 'subsection-2-4',
+            title: '2.4 Pilas (Stacks)',
+            slug: 'pilas',
+            content: [
+              "Una estructura de datos LIFO (Last-In, First-Out), análoga a una pila de platos.",
+              { type: 'heading', level: 4, text: "Modelo Conceptual" },
+              "Una colección de elementos con dos operaciones principales: push (añadir al tope) y pop (quitar del tope).",
+              { type: 'heading', level: 4, text: "Operaciones Clave y Complejidad" },
+              { type: 'list', items: [
+                "Push (Añadir al tope): O(1)",
+                "Pop (Quitar del tope): O(1)",
+                "Peek/Top (Ver el elemento superior): O(1)"
+              ]},
+              { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
+              "Problemas que implican procesamiento en orden inverso, como invertir una cadena. Comprobación de sintaxis (paréntesis, llaves, corchetes balanceados). Algoritmos de recorrido de grafos y árboles (DFS). Problemas de \"próximo elemento mayor\". Problemas clásicos: \"Valid Parentheses\", \"Min Stack\"."
+            ]
+          },
+          {
+            id: 'subsection-2-5',
+            title: '2.5 Colas (Queues)',
+            slug: 'colas',
+            content: [
+              "Una estructura de datos FIFO (First-In, First-Out), como una fila para pagar.",
+              { type: 'heading', level: 4, text: "Modelo Conceptual" },
+              "Una colección de elementos donde los elementos se añaden por detrás (enqueue) y se quitan por delante (dequeue).",
+              { type: 'heading', level: 4, text: "Operaciones Clave y Complejidad" },
+              { type: 'list', items: [
+                "Enqueue (Añadir al final): O(1)",
+                "Dequeue (Quitar del principio): O(1)",
+                "Peek (Ver el primer elemento): O(1)"
+              ]},
+              { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
+              "Algoritmo de Búsqueda en Anchura (BFS) para árboles y grafos, que es clave para encontrar el camino más corto en grafos no ponderados. Programación de tareas. Cualquier escenario que requiera procesar elementos en el orden en que llegaron."
+            ]
+          },
+          {
+            id: 'subsection-2-6',
+            title: '2.6 Árboles (BST, Montículos)',
+            slug: 'arboles',
+            content: [
+              "Estructuras de datos jerárquicas que consisten en nodos conectados por aristas.",
+              { type: 'heading', level: 3, text: 'Árbol de Búsqueda Binaria (BST)'},
+              { type: 'list', items: [
+                "Modelo Conceptual: Un árbol binario donde para cada nodo, todos los valores en su subárbol izquierdo son menores que el valor del nodo, y todos los valores en su subárbol derecho son mayores.",
+                "Operaciones: Búsqueda, Inserción, Eliminación tienen una complejidad de O(log n) en promedio (para un árbol balanceado) y O(n) en el peor caso (un árbol degenerado, similar a una lista enlazada).",
+                "Disparadores: Problemas que requieren mantener un conjunto ordenado de datos con inserciones y búsquedas eficientes. \"Validar un BST\", \"Encontrar el k-ésimo elemento más pequeño en un BST\"."
+              ]},
+              { type: 'heading', level: 3, text: 'Montículos (Heaps)'},
+              { type: 'list', items: [
+                "Modelo Conceptual: Un árbol binario completo que satisface la propiedad del montículo: en un min-heap, el padre es siempre menor o igual que sus hijos; en un max-heap, el padre es siempre mayor or igual.",
+                "Operaciones: Inserción (O(log n)), Extracción del mínimo/máximo (O(log n)), Obtener el mínimo/máximo (O(1)).",
+                "Disparadores: Problemas que requieren acceso rápido al elemento mínimo o máximo de una colección. Implementación de una cola de prioridad. Problemas como \"Encontrar la mediana de un flujo de datos\", \"Top K elementos frecuentes\", \"Fusionar K listas ordenadas\"."
+              ]}
+            ]
+          },
+           {
+            id: 'subsection-2-7',
+            title: '2.7 Grafos',
+            slug: 'grafos',
+            content: [
+              "Un conjunto de nodos (vértices) conectados por aristas. Las aristas pueden ser dirigidas o no dirigidas, y ponderadas o no ponderadas.",
+              { type: 'heading', level: 4, text: "Representaciones Clave" },
+              { type: 'list', items: [
+                "Lista de Adyacencia: Un array o mapa donde cada índice/clave corresponde a un vértice y el valor es una lista de sus vecinos. Eficiente en espacio para grafos dispersos.",
+                "Matriz de Adyacencia: Una matriz NxN donde N es el número de vértices. M[i][j] = 1 (o el peso) si hay una arista de i a j. Eficiente para comprobar rápidamente la existencia de una arista entre dos nodos, pero costosa en espacio para grafos grandes."
+              ]},
+              { type: 'heading', level: 4, text: "Algoritmos de Recorrido" },
+               { type: 'list', items: [
+                "Búsqueda en Anchura (BFS): Explora los vecinos de un nodo antes de pasar al siguiente nivel. Usa una cola. Ideal para encontrar el camino más corto en grafos no ponderados.",
+                "Búsqueda en Profundidad (DFS): Explora tan lejos como sea posible a lo largo de cada rama antes de retroceder. Usa una pila (a menudo la pila de llamadas recursivas). Útil para problemas como la detección de ciclos, ordenación topológica y encontrar componentes conectados."
+              ]},
+              { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
+              "Cualquier problema que modele redes y conexiones: redes sociales, mapas de ciudades, dependencias de tareas. Palabras clave: \"red\", \"conexiones\", \"camino más corto\", \"ciclo\", \"requisitos previos\". Problemas clásicos: \"Número de Islas\", \"Clonar Grafo\", \"Course Schedule\"."
             ]
           }
         ]
       }
     ],
   },
+  {
+    id: "part-2",
+    title: "Parte II: Patrones de Codificación",
+    slug: "patrones-de-codificacion",
+    sections: [
+      {
+        id: "section-2-1",
+        title: "1. Patrones de Array/Cadena",
+        slug: "patrones-de-array-o-cadena",
+        subsections: [
+          {
+            id: "subsection-2-1-1",
+            title: "1.1 Ventana Deslizante (Sliding Window)",
+            slug: "ventana-deslizante",
+            content: [
+              "Este patrón se utiliza para realizar una operación en una subsección específica de un array o cadena, a menudo para encontrar la subsección óptima (por ejemplo, la más larga, la más corta o la que cumple una condición).",
+              { type: 'heading', level: 4, text: "Modelo Conceptual" },
+              "Imagina dos punteros, `izquierda` y `derecha`, que forman los límites de una \"ventana\". El puntero `derecha` se expande para incluir nuevos elementos. Cuando la condición de la ventana ya no es válida, el puntero `izquierda` se contrae para que la ventana vuelva a ser válida. Este proceso continúa hasta que el puntero `derecha` alcanza el final.",
+              { type: 'heading', level: 4, text: "Cuándo Usarlo (Señales)" },
+              { type: 'list', items: [
+                "El problema involucra un array, lista enlazada o cadena.",
+                "Se te pide que encuentres una subsección (subarray o subcadena) que satisfaga ciertas restricciones.",
+                "Se usan palabras clave como \"subarray/subcadena más larga/corta\", \"contiguous\" (contiguo), \"máximo/mínimo\".",
+              ]},
+              { type: 'heading', level: 4, text: "Ejemplo de Problema Clásico" },
+              "**Problema:** Dado un array de enteros `nums` y un entero `k`, encuentra la suma máxima de cualquier subarray contiguo de tamaño `k`.",
+              "**Solución con Ventana Deslizante:**",
+              "1. Calcula la suma de la primera ventana de tamaño `k`.",
+              "2. Itera desde el k-ésimo elemento hasta el final del array.",
+              "3. En cada paso, \"desliza\" la ventana hacia adelante: suma el nuevo elemento (en `derecha`) y resta el elemento que sale de la ventana (en `izquierda`).",
+              "4. Mantén un registro de la suma máxima encontrada."
+            ]
+          },
+          {
+            id: "subsection-2-1-2",
+            title: "1.2 Dos Punteros (Two Pointers)",
+            slug: "dos-punteros",
+            content: [
+              "En este patrón, se utilizan dos punteros para iterar a través de una estructura de datos, a menudo desde extremos opuestos, hasta que se encuentran en el medio. Es extremadamente útil para optimizar problemas que de otro modo requerirían un bucle anidado O(n^2).",
+              { type: 'heading', level: 4, text: "Modelo Conceptual" },
+              "Normalmente, un puntero `izquierda` comienza en el índice 0 y un puntero `derecha` comienza en el último índice. En cada paso, se evalúa la condición basada en los valores en `izquierda` y `derecha`, y uno de los punteros se mueve hacia el centro. El bucle termina cuando `izquierda >= derecha`.",
+              { type: 'heading', level: 4, text: "Cuándo Usarlo (Señales)" },
+              { type: 'list', items: [
+                "El problema involucra un array o cadena **ordenado**.",
+                "Se te pide que encuentres un par, un trío o un subarray que satisfaga una condición.",
+                "Necesitas comparar elementos desde ambos extremos de la estructura de datos.",
+                "Problemas relacionados con palíndromos, encontrar sumas de pares, o eliminar duplicados."
+              ]},
+              { type: 'heading', level: 4, text: "Ejemplo de Problema Clásico" },
+              "**Problema:** Dado un array **ordenado** de enteros `nums` y un entero `target`, encuentra dos números en el array que sumen `target`.",
+              "**Solución con Dos Punteros:**",
+              "1. Inicializa `izquierda = 0` y `derecha = nums.length - 1`.",
+              "2. Mientras `izquierda < derecha`:",
+              "   a. Calcula `suma = nums[izquierda] + nums[derecha]`.",
+              "   b. Si `suma === target`, has encontrado el par.",
+              "   c. Si `suma < target`, necesitas una suma mayor, así que incrementa `izquierda`.",
+              "   d. Si `suma > target`, necesitas una suma menor, así que decrementa `derecha`."
+            ]
+          }
+        ]
+      },
+       {
+        id: "section-2-2",
+        title: "2. Patrones de Lista Enlazada",
+        slug: "patrones-de-lista-enlazada",
+        subsections: [
+          {
+            id: "subsection-2-2-1",
+            title: "2.1 Punteros Rápidos y Lentos",
+            slug: "punteros-rapidos-y-lentos",
+            content: [
+              "Este patrón, también conocido como el algoritmo de la liebre y la tortuga, utiliza dos punteros que se mueven a través de una secuencia a diferentes velocidades. Es el patrón de referencia para problemas de ciclos y de encontrar puntos medios en listas enlazadas.",
+              { type: 'heading', level: 4, text: "Modelo Conceptual" },
+              "Un puntero `lento` se mueve un paso a la vez, mientras que un puntero `rápido` se mueve dos pasos a la vez. Si la lista enlazada tiene un ciclo, el puntero `rápido` eventualmente alcanzará al puntero `lento` por detrás.",
+              { type: 'heading', level: 4, text: "Cuándo Usarlo (Señales)" },
+              { type: 'list', items: [
+                "El problema involucra una lista enlazada.",
+                "Se te pide que detectes un ciclo.",
+                "Necesitas encontrar el nodo del medio de la lista.",
+                "Problemas relacionados con encontrar el k-ésimo nodo desde el final."
+              ]},
+              { type: 'heading', level: 4, text: "Ejemplos de Problemas Clásicos" },
+              "**1. Detección de Ciclos:** Si en algún momento `rapido === lento`, hay un ciclo. Si `rapido` o `rapido.next` llega a ser `null`, no hay ciclo.",
+              "**2. Encontrar el Nodo del Medio:** Cuando el puntero `rápido` llega al final de la lista, el puntero `lento` estará exactamente en el medio."
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];
 
 export function findContentBySlug(slug: string[]) {

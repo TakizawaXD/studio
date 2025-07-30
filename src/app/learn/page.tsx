@@ -51,8 +51,8 @@ export default function LearnDashboardPage() {
             <CardDescription>Domina los más de 20 patrones de codificación esenciales para resolver cualquier problema de algoritmos con confianza.</CardDescription>
           </CardHeader>
           <CardContent>
-             <Button asChild variant="secondary" className="w-full">
-              <Link href="#">Explorar Patrones (Próximamente)</Link>
+             <Button asChild className="w-full">
+              <Link href="/learn/patrones-de-codificacion/patrones-de-array-o-cadena/ventana-deslizante">Explorar Patrones</Link>
             </Button>
           </CardContent>
         </Card>
