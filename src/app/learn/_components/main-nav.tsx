@@ -75,10 +75,10 @@ export function MainNav() {
                         <span className={cn(
                             "flex items-center gap-2 text-left p-2 rounded-md text-sm font-medium transition-colors",
                             pathname === "/learn/tools/star-feedback"
-                                ? "bg-primary text-primary-foreground"
-                                : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                                ? "bg-accent text-accent-foreground"
+                                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                         )}>
-                            <BotMessageSquare className="w-4 h-4 text-primary/80" />
+                            <BotMessageSquare className="w-4 h-4 text-accent" />
                             Feedback STAR con IA
                         </span>
                     </Link>

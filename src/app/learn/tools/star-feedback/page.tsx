@@ -69,7 +69,7 @@ export default function StarFeedbackPage() {
     <div className="space-y-8">
       <div>
         <div className="flex items-center gap-4 mb-2">
-            <BotMessageSquare className="w-8 h-8 text-primary"/>
+            <BotMessageSquare className="w-8 h-8 text-accent"/>
             <h1 className="text-3xl font-bold font-headline">Feedback del Método STAR con IA</h1>
         </div>
         <p className="text-muted-foreground">
@@ -147,7 +147,7 @@ export default function StarFeedbackPage() {
             <div>
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-lg font-semibold">Puntuación General</h3>
-                <span className="text-xl font-bold text-primary">{state.data.overallScore}/100</span>
+                <span className="text-xl font-bold text-accent">{state.data.overallScore}/100</span>
               </div>
               <Progress value={state.data.overallScore} className="w-full" />
                <p className="text-sm text-muted-foreground mt-4">{state.data.overallFeedback}</p>
@@ -181,7 +181,7 @@ function FeedbackCard({ icon: Icon, title, feedback }: { icon: React.ElementType
         <Card className="bg-secondary/50">
             <CardHeader>
                 <div className="flex items-center gap-3">
-                    <Icon className="w-6 h-6 text-primary"/>
+                    <Icon className="w-6 h-6 text-accent"/>
                     <CardTitle className="font-headline">{title}</CardTitle>
                 </div>
             </CardHeader>

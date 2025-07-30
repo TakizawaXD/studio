@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function LearnHomePage() {
   return (
     <div className="flex flex-col items-center justify-center h-full text-center">
-        <Card className="w-full max-w-lg border-dashed shadow-lg">
+        <Card className="w-full max-w-lg border-dashed shadow-lg bg-secondary/20">
             <CardHeader>
                 <CardTitle className="font-headline text-4xl mb-2">
                     ¡Bienvenido, Arquitecto de Entrevistas!
@@ -20,12 +20,12 @@ export default function LearnHomePage() {
                     Usa la barra de navegación de la izquierda para explorar el contenido. Comienza por la fundación, sumérgete en los patrones de codificación y prepárate para dominar cualquier desafío técnico.
                 </p>
                 <div className="flex justify-center gap-4">
-                    <Button asChild>
+                    <Button asChild variant="secondary">
                         <Link href="/learn/la-fundacion/dominando-el-proceso-de-aprendizaje/cambio-de-paradigma-reconocimiento-de-patrones">
                              <BookOpenCheck className="mr-2 h-4 w-4" /> Empezar a Estudiar
                         </Link>
                     </Button>
-                     <Button variant="outline" asChild>
+                     <Button asChild>
                         <Link href="/learn/tools/star-feedback">
                             <Lightbulb className="mr-2 h-4 w-4" /> Probar Herramienta IA
                         </Link>

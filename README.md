@@ -203,4 +203,3 @@ npm run genkit:dev
 Esto iniciará el servidor de desarrollo de Genkit, que gestiona los flujos de IA.
 
 ¡Y listo! Ahora puedes abrir tu navegador en `http://localhost:9002` para ver la aplicación en funcionamiento.
-```

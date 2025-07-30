@@ -13,12 +13,12 @@ export default function Home() {
         <nav className="ml-auto flex gap-4 sm:gap-6 items-center">
           <Link
             href="/login"
-            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
+            className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors underline-offset-4 hover:underline"
             prefetch={false}
           >
             Iniciar Sesión
           </Link>
-          <Button asChild variant="secondary">
+          <Button asChild>
             <Link href="/signup">Comenzar</Link>
           </Button>
         </nav>

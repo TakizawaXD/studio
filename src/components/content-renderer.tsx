@@ -5,13 +5,20 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import Link from "next/link";
 import { Copy } from "lucide-react";
 import { Button } from "./ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 function CodeBlock({ code }: { code: string }) {
+    const { toast } = useToast();
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code);
+        toast({ title: "Copiado", description: "El código ha sido copiado al portapapeles." });
+    };
+
     return (
       <div className="my-6 rounded-lg bg-secondary/30 border">
         <div className="flex items-center justify-between px-4 py-2 border-b">
           <p className="text-sm text-muted-foreground">Ejemplo de código</p>
-          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => navigator.clipboard.writeText(code)}>
+          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleCopy}>
             <Copy className="h-4 w-4" />
           </Button>
         </div>
@@ -29,7 +36,6 @@ export function ContentRenderer({ content }: { content: ContentItem[] }) {
     <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
       {content.map((item, index) => {
         if (typeof item === "string") {
-          // Usar un regex para encontrar texto entre ` (acentos graves) y envolverlo en <code>
           const parts = item.split(/(`[^`]+`)/g);
           return (
             <p key={index}>
