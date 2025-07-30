@@ -2,6 +2,16 @@ import type { ContentItem } from "@/lib/content";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Link from "next/link";
 
+function CodeBlock({ code }: { code: string }) {
+    return (
+      <div className="my-4 rounded-md bg-muted/50 p-4">
+        <pre className="text-sm text-foreground/90 whitespace-pre-wrap">
+          <code>{code}</code>
+        </pre>
+      </div>
+    );
+  }
+
 export function ContentRenderer({ content }: { content: ContentItem[] }) {
   return (
     <div className="space-y-6 text-foreground/90 leading-loose">
@@ -28,6 +38,9 @@ export function ContentRenderer({ content }: { content: ContentItem[] }) {
                     ))}
                     </ul>
                 );
+
+            case "code":
+                return <CodeBlock key={index} code={item.code} />;
 
             case "table":
                 return (

@@ -2,7 +2,8 @@ export type ContentItem =
   | string
   | { type: 'list'; items: string[] }
   | { type: 'table'; headers: string[]; rows: (string | { type: 'link'; text: string; href: string })[][] }
-  | { type: 'heading'; level: 2 | 3 | 4; text: string };
+  | { type: 'heading'; level: 2 | 3 | 4; text: string }
+  | { type: 'code'; code: string };
 
 export type Section = {
   id: string;
@@ -181,6 +182,24 @@ export const content: Part[] = [
               ]},
               { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
               "Cualquier problema que involucre una colección ordenada de datos, procesamiento de texto, o la necesidad de acceso rápido por índice. Son la base para muchos patrones como Ventana Deslizante y Dos Punteros.",
+              { type: 'heading', level: 4, text: 'Ejemplo de Código: Invertir un Array' },
+              { type: 'code', code: 
+`function reverseArray(arr: any[]): any[] {
+  let left = 0;
+  let right = arr.length - 1;
+  while (left < right) {
+    // Intercambiar elementos
+    const temp = arr[left];
+    arr[left] = arr[right];
+    arr[right] = temp;
+    
+    // Mover punteros hacia el centro
+    left++;
+    right--;
+  }
+  return arr;
+}`
+              }
             ]
           },
           {
@@ -199,7 +218,32 @@ export const content: Part[] = [
                 "Inserción/Eliminación (al final): O(n) para simplemente enlazadas (requiere recorrer), O(1) si se mantiene un puntero a la cola."
               ]},
               { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
-              "Problemas que requieren frecuentes inserciones o eliminaciones en medio de una secuencia. El patrón de \"Punteros Rápidos y Lentos\" se utiliza comúnmente para detectar ciclos o encontrar el medio. Problemas como \"Invertir una Lista Enlazada\" son clásicos."
+              "Problemas que requieren frecuentes inserciones o eliminaciones en medio de una secuencia. El patrón de \"Punteros Rápidos y Lentos\" se utiliza comúnmente para detectar ciclos o encontrar el medio. Problemas como \"Invertir una Lista Enlazada\" son clásicos.",
+              { type: 'heading', level: 4, text: 'Ejemplo de Código: Definición de Nodo e Inversión de Lista' },
+              { type: 'code', code: 
+`class ListNode {
+  val: number;
+  next: ListNode | null;
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = (val === undefined ? 0 : val);
+    this.next = (next === undefined ? null : next);
+  }
+}
+
+function reverseList(head: ListNode | null): ListNode | null {
+  let prev: ListNode | null = null;
+  let current: ListNode | null = head;
+  
+  while (current !== null) {
+    const nextTemp: ListNode | null = current.next;
+    current.next = prev;
+    prev = current;
+    current = nextTemp;
+  }
+  
+  return prev;
+}`
+              }
             ]
           },
           {
@@ -217,7 +261,23 @@ export const content: Part[] = [
                 "Búsqueda: O(1) en promedio, O(n) en el peor caso"
               ]},
               { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
-              "Siempre que necesites buscar, insertar o eliminar elementos rápidamente y el orden no sea importante. Son increíblemente versátiles. Palabras clave: \"frecuencia\", \"conteo\", \"duplicados\", \" caché\", \"dos sumas\". Problemas como \"Two Sum\", \"Group Anagrams\" y la implementación de una caché LRU dependen de las tablas hash."
+              "Siempre que necesites buscar, insertar o eliminar elementos rápidamente y el orden no sea importante. Son increíblemente versátiles. Palabras clave: \"frecuencia\", \"conteo\", \"duplicados\", \" caché\", \"dos sumas\". Problemas como \"Two Sum\", \"Group Anagrams\" y la implementación de una caché LRU dependen de las tablas hash.",
+              { type: 'heading', level: 4, text: 'Ejemplo de Código: Problema "Two Sum"' },
+              { type: 'code', code:
+`function twoSum(nums: number[], target: number): number[] {
+  const map = new Map<number, number>(); // valor -> índice
+  
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (map.has(complement)) {
+      return [map.get(complement)!, i];
+    }
+    map.set(nums[i], i);
+  }
+  
+  return []; // No se encontró solución
+}`
+              }
             ]
           },
           {
@@ -235,7 +295,35 @@ export const content: Part[] = [
                 "Peek/Top (Ver el elemento superior): O(1)"
               ]},
               { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
-              "Problemas que implican procesamiento en orden inverso, como invertir una cadena. Comprobación de sintaxis (paréntesis, llaves, corchetes balanceados). Algoritmos de recorrido de grafos y árboles (DFS). Problemas de \"próximo elemento mayor\". Problemas clásicos: \"Valid Parentheses\", \"Min Stack\"."
+              "Problemas que implican procesamiento en orden inverso, como invertir una cadena. Comprobación de sintaxis (paréntesis, llaves, corchetes balanceados). Algoritmos de recorrido de grafos y árboles (DFS). Problemas de \"próximo elemento mayor\". Problemas clásicos: \"Valid Parentheses\", \"Min Stack\".",
+              { type: 'heading', level: 4, text: 'Ejemplo de Código: Paréntesis Válidos' },
+              { type: 'code', code:
+`function isValid(s: string): boolean {
+  const stack: string[] = [];
+  const map: { [key: string]: string } = {
+    "(": ")",
+    "[": "]",
+    "{": "}",
+  };
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (map[char]) {
+      stack.push(char);
+    } else {
+      if (stack.length === 0) {
+        return false;
+      }
+      const lastOpen = stack.pop()!;
+      if (map[lastOpen] !== char) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}`
+              }
             ]
           },
           {
@@ -253,7 +341,33 @@ export const content: Part[] = [
                 "Peek (Ver el primer elemento): O(1)"
               ]},
               { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
-              "Algoritmo de Búsqueda en Anchura (BFS) para árboles y grafos, que es clave para encontrar el camino más corto en grafos no ponderados. Programación de tareas. Cualquier escenario que requiera procesar elementos en el orden en que llegaron."
+              "Algoritmo de Búsqueda en Anchura (BFS) para árboles y grafos, que es clave para encontrar el camino más corto en grafos no ponderados. Programación de tareas. Cualquier escenario que requiera procesar elementos en el orden en que llegaron.",
+              { type: 'heading', level: 4, text: 'Ejemplo de Código: Implementación Básica de una Cola' },
+              { type: 'code', code: 
+`class Queue<T> {
+  private storage: T[] = [];
+
+  enqueue(item: T): void {
+    this.storage.push(item);
+  }
+
+  dequeue(): T | undefined {
+    return this.storage.shift();
+  }
+
+  peek(): T | undefined {
+    return this.storage[0];
+  }
+
+  isEmpty(): boolean {
+    return this.storage.length === 0;
+  }
+  
+  size(): number {
+    return this.storage.length;
+  }
+}`
+              }
             ]
           },
           {
@@ -268,12 +382,39 @@ export const content: Part[] = [
                 "Operaciones: Búsqueda, Inserción, Eliminación tienen una complejidad de O(log n) en promedio (para un árbol balanceado) y O(n) en el peor caso (un árbol degenerado, similar a una lista enlazada).",
                 "Disparadores: Problemas que requieren mantener un conjunto ordenado de datos con inserciones y búsquedas eficientes. \"Validar un BST\", \"Encontrar el k-ésimo elemento más pequeño en un BST\"."
               ]},
+              { type: 'heading', level: 4, text: 'Ejemplo de Código: Búsqueda en un BST' },
+              { type: 'code', code:
+`class TreeNode {
+  val: number;
+  left: TreeNode | null;
+  right: TreeNode | null;
+  constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+    this.val = (val === undefined ? 0 : val);
+    this.left = (left === undefined ? null : left);
+    this.right = (right === undefined ? null : right);
+  }
+}
+
+function searchBST(root: TreeNode | null, val: number): TreeNode | null {
+    if (root === null || root.val === val) {
+        return root;
+    }
+
+    if (val < root.val) {
+        return searchBST(root.left, val);
+    } else {
+        return searchBST(root.right, val);
+    }
+}`
+              },
               { type: 'heading', level: 3, text: 'Montículos (Heaps)'},
               { type: 'list', items: [
                 "Modelo Conceptual: Un árbol binario completo que satisface la propiedad del montículo: en un min-heap, el padre es siempre menor o igual que sus hijos; en un max-heap, el padre es siempre mayor or igual.",
                 "Operaciones: Inserción (O(log n)), Extracción del mínimo/máximo (O(log n)), Obtener el mínimo/máximo (O(1)).",
                 "Disparadores: Problemas que requieren acceso rápido al elemento mínimo o máximo de una colección. Implementación de una cola de prioridad. Problemas como \"Encontrar la mediana de un flujo de datos\", \"Top K elementos frecuentes\", \"Fusionar K listas ordenadas\"."
-              ]}
+              ]},
+              { type: 'heading', level: 4, text: 'Ejemplo de Uso: Encontrar los K elementos más grandes' },
+              "Aunque no se suele implementar un montículo desde cero en una entrevista, es crucial saber cómo usarlo. La mayoría de los lenguajes no tienen una implementación nativa de min-heap/max-heap, por lo que a menudo se utilizan librerías o se simula un max-heap negando los números en un min-heap.",
             ]
           },
            {
@@ -293,7 +434,38 @@ export const content: Part[] = [
                 "Búsqueda en Profundidad (DFS): Explora tan lejos como sea posible a lo largo de cada rama antes de retroceder. Usa una pila (a menudo la pila de llamadas recursivas). Útil para problemas como la detección de ciclos, ordenación topológica y encontrar componentes conectados."
               ]},
               { type: 'heading', level: 4, text: "Casos de Uso y Disparadores de Entrevista" },
-              "Cualquier problema que modele redes y conexiones: redes sociales, mapas de ciudades, dependencias de tareas. Palabras clave: \"red\", \"conexiones\", \"camino más corto\", \"ciclo\", \"requisitos previos\". Problemas clásicos: \"Número de Islas\", \"Clonar Grafo\", \"Course Schedule\"."
+              "Cualquier problema que modele redes y conexiones: redes sociales, mapas de ciudades, dependencias de tareas. Palabras clave: \"red\", \"conexiones\", \"camino más corto\", \"ciclo\", \"requisitos previos\". Problemas clásicos: \"Número de Islas\", \"Clonar Grafo\", \"Course Schedule\".",
+              { type: 'heading', level: 4, text: 'Ejemplo de Código: Recorrido BFS de un Grafo' },
+              { type: 'code', code:
+`function bfs(graph: Map<number, number[]>, startNode: number): void {
+  const visited = new Set<number>();
+  const queue: number[] = [startNode];
+  visited.add(startNode);
+
+  while (queue.length > 0) {
+    const currentNode = queue.shift()!;
+    console.log(currentNode); // Procesar el nodo
+
+    const neighbors = graph.get(currentNode) || [];
+    for (const neighbor of neighbors) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.push(neighbor);
+      }
+    }
+  }
+}
+
+// Ejemplo de uso:
+// El grafo se representa como una lista de adyacencia
+const graph = new Map<number, number[]>();
+graph.set(0, [1, 2]);
+graph.set(1, [2]);
+graph.set(2, [0, 3]);
+graph.set(3, [3]);
+
+bfs(graph, 2); // Salida: 2, 0, 3, 1`
+              }
             ]
           }
         ]
@@ -326,11 +498,27 @@ export const content: Part[] = [
               ]},
               { type: 'heading', level: 4, text: "Ejemplo de Problema Clásico" },
               "**Problema:** Dado un array de enteros `nums` y un entero `k`, encuentra la suma máxima de cualquier subarray contiguo de tamaño `k`.",
-              "**Solución con Ventana Deslizante:**",
-              "1. Calcula la suma de la primera ventana de tamaño `k`.",
-              "2. Itera desde el k-ésimo elemento hasta el final del array.",
-              "3. En cada paso, \"desliza\" la ventana hacia adelante: suma el nuevo elemento (en `derecha`) y resta el elemento que sale de la ventana (en `izquierda`).",
-              "4. Mantén un registro de la suma máxima encontrada."
+              { type: 'heading', level: 4, text: "Plantilla de Código" },
+              { type: 'code', code:
+`function findMaxSumSubarray(nums: number[], k: number): number {
+  let maxSum = -Infinity;
+  let windowSum = 0;
+  let windowStart = 0;
+
+  for (let windowEnd = 0; windowEnd < nums.length; windowEnd++) {
+    windowSum += nums[windowEnd]; // Añadir el siguiente elemento
+
+    // Deslizar la ventana si hemos alcanzado el tamaño k
+    if (windowEnd >= k - 1) {
+      maxSum = Math.max(maxSum, windowSum);
+      windowSum -= nums[windowStart]; // Restar el elemento que sale
+      windowStart++; // Deslizar la ventana hacia adelante
+    }
+  }
+
+  return maxSum;
+}`
+              }
             ]
           },
           {
@@ -350,13 +538,28 @@ export const content: Part[] = [
               ]},
               { type: 'heading', level: 4, text: "Ejemplo de Problema Clásico" },
               "**Problema:** Dado un array **ordenado** de enteros `nums` y un entero `target`, encuentra dos números en el array que sumen `target`.",
-              "**Solución con Dos Punteros:**",
-              "1. Inicializa `izquierda = 0` y `derecha = nums.length - 1`.",
-              "2. Mientras `izquierda < derecha`:",
-              "   a. Calcula `suma = nums[izquierda] + nums[derecha]`.",
-              "   b. Si `suma === target`, has encontrado el par.",
-              "   c. Si `suma < target`, necesitas una suma mayor, así que incrementa `izquierda`.",
-              "   d. Si `suma > target`, necesitas una suma menor, así que decrementa `derecha`."
+              { type: 'heading', level: 4, text: "Plantilla de Código" },
+              { type: 'code', code: 
+`function pairWithTargetSum(arr: number[], targetSum: number): number[] {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    const currentSum = arr[left] + arr[right];
+    if (currentSum === targetSum) {
+      return [left, right]; // Par encontrado
+    }
+
+    if (targetSum > currentSum) {
+      left++; // Necesitamos un par con una suma mayor
+    } else {
+      right--; // Necesitamos un par con una suma menor
+    }
+  }
+
+  return [-1, -1]; // No se encontró el par
+}`
+              }
             ]
           }
         ]
@@ -381,9 +584,32 @@ export const content: Part[] = [
                 "Necesitas encontrar el nodo del medio de la lista.",
                 "Problemas relacionados con encontrar el k-ésimo nodo desde el final."
               ]},
-              { type: 'heading', level: 4, text: "Ejemplos de Problemas Clásicos" },
-              "**1. Detección de Ciclos:** Si en algún momento `rapido === lento`, hay un ciclo. Si `rapido` o `rapido.next` llega a ser `null`, no hay ciclo.",
-              "**2. Encontrar el Nodo del Medio:** Cuando el puntero `rápido` llega al final de la lista, el puntero `lento` estará exactamente en el medio."
+              { type: 'heading', level: 4, text: "Ejemplo de Problema Clásico" },
+              "**Problema:** Detectar si una lista enlazada tiene un ciclo.",
+              { type: 'heading', level: 4, text: "Plantilla de Código" },
+              { type: 'code', code: 
+`class ListNode {
+  val: number;
+  next: ListNode | null;
+  // ... constructor
+}
+
+function hasCycle(head: ListNode | null): boolean {
+  let slow = head;
+  let fast = head;
+
+  while (fast !== null && fast.next !== null) {
+    slow = slow!.next;
+    fast = fast.next.next;
+
+    if (slow === fast) {
+      return true; // Ciclo detectado
+    }
+  }
+
+  return false; // No hay ciclo
+}`
+              }
             ]
           }
         ]
